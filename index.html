@@ -1,113 +1,244 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IvasyaStore – Top Up Game Murah</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IvasyaStore – Top Up Game</title>
+
   <style>
-    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#0b1220;color:#e5e7eb}
-    header{background:#0f172a;padding:18px 20px;border-bottom:1px solid #1e293b}
-    header h1{margin:0;font-size:24px;color:#38bdf8}
-    header p{margin:4px 0 0;font-size:13px;opacity:.85}
-    .container{max-width:1200px;margin:auto;padding:20px}
-    .games{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
-    .game-card{background:#020617;border-radius:16px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,.45)}
-    .game-card img{width:100%;height:150px;object-fit:cover;display:block}
-    .game-info{padding:14px}
-    .game-info h3{margin:0 0 6px;font-size:17px}
-    .price{font-size:13px;color:#93c5fd;margin-bottom:10px}
-    .order-btn{display:block;text-align:center;padding:10px;border-radius:10px;background:#22c55e;color:#052e16;text-decoration:none;font-weight:bold;font-size:14px;margin-bottom:8px}
-    .order-btn:hover{background:#16a34a;color:#ecfdf5}
-    footer{text-align:center;padding:22px;font-size:12px;opacity:.6}
+    :root{
+      --bg:#0b1220;
+      --card:#020617;
+      --header:#0f172a;
+      --border:#1e293b;
+      --primary:#22c55e;
+      --primary-hover:#16a34a;
+      --text:#e5e7eb;
+      --muted:#94a3b8;
+      --accent:#38bdf8;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu;
+      background:var(--bg);
+      color:var(--text);
+    }
+
+    header{
+      background:var(--header);
+      border-bottom:1px solid var(--border);
+    }
+    .header-inner{
+      max-width:1200px;
+      margin:auto;
+      padding:18px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    header h1{
+      margin:0;
+      font-size:26px;
+      color:var(--accent);
+    }
+    header p{
+      margin:0;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .container{
+      max-width:1200px;
+      margin:auto;
+      padding:26px 20px 40px;
+    }
+
+    .games{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+      gap:22px;
+    }
+
+    .game-card{
+      background:var(--card);
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:0 12px 30px rgba(0,0,0,.45);
+      display:flex;
+      flex-direction:column;
+      transition:.25s ease;
+    }
+    .game-card:hover{transform:translateY(-4px)}
+
+    .game-card img{
+      width:100%;
+      height:150px;
+      object-fit:cover;
+      display:block;
+    }
+
+    .game-info{
+      padding:14px 14px 16px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .game-info h3{
+      margin:0;
+      font-size:17px;
+      line-height:1.3;
+    }
+
+    .price{
+      font-size:13px;
+      color:var(--muted);
+      border-bottom:1px dashed var(--border);
+      padding-bottom:8px;
+    }
+
+    .order-btn{
+      display:block;
+      width:100%;
+      text-align:center;
+      padding:10px 12px;
+      border-radius:10px;
+      background:var(--primary);
+      color:#052e16;
+      text-decoration:none;
+      font-weight:600;
+      font-size:14px;
+      transition:.2s ease;
+    }
+    .order-btn:hover{
+      background:var(--primary-hover);
+      color:#ecfdf5;
+    }
+
+    footer{
+      border-top:1px solid var(--border);
+      text-align:center;
+      padding:22px 16px;
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    @media(max-width:480px){
+      header h1{font-size:22px}
+      .game-card img{height:130px}
+    }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>IvasyaStore</h1>
-  <p>Top Up Game • Manual Digiflazz • Order WhatsApp</p>
+  <div class="header-inner">
+    <div>
+      <h1>IvasyaStore</h1>
+      <p>Top Up Game • Manual Digiflazz • Order WhatsApp</p>
+    </div>
+    <p>CS WA: 0857‑9775‑8961</p>
+  </div>
 </header>
 
 <div class="container">
   <div class="games">
 
     <!-- MOBILE LEGENDS -->
-    <div class="game-card">
-      <img src="ml.jpg" alt="Mobile Legends">
+    <div class="game-card" onclick="toggle('ml')">
+      <img src="ml.jpg" alt="Mobile Legends" />
       <div class="game-info">
         <h3>Mobile Legends</h3>
-        <div class="price">Diamond</div>
-        <a class="order-btn" href="https://wa.me/6285797758961?text=Halo%20IvasyaStore%0AGame:%20Mobile%20Legends%0AID:%20%0AServer:%20%0ANominal:%2086%20Diamond%0AHarga:%20Rp18.000">86 Diamond – Rp18.000</a>
-        <a class="order-btn" href="https://wa.me/6285797758961?text=Halo%20IvasyaStore%0AGame:%20Mobile%20Legends%0AID:%20%0AServer:%20%0ANominal:%20172%20Diamond%0AHarga:%20Rp36.000">172 Diamond – Rp36.000</a>
-        <a class="order-btn" href="https://wa.me/6285797758961?text=Halo%20IvasyaStore%0AGame:%20Mobile%20Legends%0AID:%20%0AServer:%20%0ANominal:%20344%20Diamond%0AHarga:%20Rp72.000">344 Diamond – Rp72.000</a>
-        <a class="order-btn" href="https://wa.me/6285797758961?text=Halo%20IvasyaStore%0AGame:%20Mobile%20Legends%0AID:%20%0AServer:%20%0ANominal:%20875%20Diamond%0AHarga:%20Rp180.000">875 Diamond – Rp180.000</a>
+        <div class="price">Tap untuk pilih nominal</div>
+        <div id="ml" class="hidden">
+          <a class="order-btn" href="https://wa.me/6285797758961?text=Halo%20IvasyaStore%0AGame:%20Mobile%20Legends%0ANominal:%2086%20Diamond">86 Diamond – Rp18.000</a>
+          <a class="order-btn" href="https://wa.me/6285797758961?text=Halo%20IvasyaStore%0AGame:%20Mobile%20Legends%0ANominal:%20172%20Diamond">172 Diamond – Rp36.000</a>
+          <a class="order-btn" href="https://wa.me/6285797758961?text=Halo%20IvasyaStore%0AGame:%20Mobile%20Legends%0ANominal:%20344%20Diamond">344 Diamond – Rp72.000</a>
+        </div>
       </div>
     </div>
 
     <!-- FREE FIRE -->
-    <div class="game-card">
-      <img src="ff.jpg" alt="Free Fire">
+    <div class="game-card" onclick="toggle('ff')">
+      <img src="ff.jpg" alt="Free Fire" />
       <div class="game-info">
         <h3>Free Fire</h3>
-        <div class="price">Diamond</div>
-        <a class="order-btn" href="https://wa.me/6285797758961?text=Halo%20IvasyaStore%0AGame:%20Free%20Fire%0AID:%20%0ANominal:%2070%20Diamond%0AHarga:%20Rp10.000">70 Diamond – Rp10.000</a>
-        <a class="order-btn" href="https://wa.me/6285797758961?text=Halo%20IvasyaStore%0AGame:%20Free%20Fire%0AID:%20%0ANominal:%2140%20Diamond%0AHarga:%20Rp20.000">140 Diamond – Rp20.000</a>
-        <a class="order-btn" href="https://wa.me/6285797758961?text=Halo%20IvasyaStore%0AGame:%20Free%20Fire%0AID:%20%0ANominal:%2355%20Diamond%0AHarga:%20Rp50.000">355 Diamond – Rp50.000</a>
+        <div class="price">Tap untuk pilih nominal</div>
+        <div id="ff" class="hidden">
+          <a class="order-btn" href="https://wa.me/6285797758961?text=Halo%20IvasyaStore%0AGame:%20Free%20Fire%0ANominal:%2070%20Diamond">70 Diamond – Rp10.000</a>
+          <a class="order-btn" href="https://wa.me/6285797758961?text=Halo%20IvasyaStore%0AGame:%20Free%20Fire%0ANominal:%20140%20Diamond">140 Diamond – Rp20.000</a>
+        </div>
       </div>
     </div>
 
-    <!-- PUBG MOBILE -->
-    <div class="game-card">
-      <img src="pubg.jpg" alt="PUBG Mobile">
+    <!-- PUBG -->
+    <div class="game-card" onclick="toggle('pubg')">
+      <img src="pubg.jpg" alt="PUBG Mobile" />
       <div class="game-info">
         <h3>PUBG Mobile</h3>
-        <div class="price">UC</div>
-        <a class="order-btn" href="https://wa.me/6285797758961?text=Halo%20IvasyaStore%0AGame:%20PUBG%20Mobile%0AID:%20%0ANominal:%2060%20UC%0AHarga:%20Rp15.000">60 UC – Rp15.000</a>
-        <a class="order-btn" href="https://wa.me/6285797758961?text=Halo%20IvasyaStore%0AGame:%20PUBG%20Mobile%0AID:%20%0ANominal:%20180%20UC%0AHarga:%20Rp45.000">180 UC – Rp45.000</a>
-        <a class="order-btn" href="https://wa.me/6285797758961?text=Halo%20IvasyaStore%0AGame:%20PUBG%20Mobile%0AID:%20%0ANominal:%20325%20UC%0AHarga:%20Rp75.000">325 UC – Rp75.000</a>
+        <div class="price">Tap untuk pilih nominal</div>
+        <div id="pubg" class="hidden">
+          <a class="order-btn" href="https://wa.me/6285797758961?text=Halo%20IvasyaStore%0AGame:%20PUBG%20Mobile%0ANominal:%2060%20UC">60 UC – Rp15.000</a>
+          <a class="order-btn" href="https://wa.me/6285797758961?text=Halo%20IvasyaStore%0AGame:%20PUBG%20Mobile%0ANominal:%20180%20UC">180 UC – Rp45.000</a>
+        </div>
       </div>
     </div>
 
     <!-- ROBLOX -->
-    <div class="game-card">
-      <img src="roblox.jpg" alt="Roblox">
+    <div class="game-card" onclick="toggle('roblox')">
+      <img src="roblox.jpg" alt="Roblox" />
       <div class="game-info">
         <h3>Roblox</h3>
-        <div class="price">Robux</div>
-        <a class="order-btn" href="https://wa.me/6285797758961?text=Halo%20IvasyaStore%0AGame:%20Roblox%0AUsername:%20%0ANominal:%20400%20Robux%0AHarga:%20Rp75.000">400 Robux – Rp75.000</a>
-        <a class="order-btn" href="https://wa.me/6285797758961?text=Halo%20IvasyaStore%0AGame:%20Roblox%0AUsername:%20%0ANominal:%20800%20Robux%0AHarga:%20Rp145.000">800 Robux – Rp145.000</a>
+        <div class="price">Tap untuk pilih nominal</div>
+        <div id="roblox" class="hidden">
+          <a class="order-btn" href="https://wa.me/6285797758961?text=Halo%20IvasyaStore%0AGame:%20Roblox%0ANominal:%20400%20Robux">400 Robux – Rp75.000</a>
+          <a class="order-btn" href="https://wa.me/6285797758961?text=Halo%20IvasyaStore%0AGame:%20Roblox%0ANominal:%20800%20Robux">800 Robux – Rp145.000</a>
+        </div>
       </div>
     </div>
 
-    <!-- GENSHIN IMPACT -->
-    <div class="game-card">
-      <img src="genshin.jpg" alt="Genshin Impact">
+    <!-- GENSHIN -->
+    <div class="game-card" onclick="toggle('genshin')">
+      <img src="genshin.jpg" alt="Genshin Impact" />
       <div class="game-info">
         <h3>Genshin Impact</h3>
-        <div class="price">Genesis Crystal</div>
-        <a class="order-btn" href="https://wa.me/6285797758961?text=Halo%20IvasyaStore%0AGame:%20Genshin%20Impact%0AUID:%20%0AServer:%20%0ANominal:%2060%20GC%0AHarga:%20Rp15.000">60 GC – Rp15.000</a>
-        <a class="order-btn" href="https://wa.me/6285797758961?text=Halo%20IvasyaStore%0AGame:%20Genshin%20Impact%0AUID:%20%0AServer:%20%0ANominal:%20300%20GC%0AHarga:%20Rp75.000">300 GC – Rp75.000</a>
-        <a class="order-btn" href="https://wa.me/6285797758961?text=Halo%20IvasyaStore%0AGame:%20Genshin%20Impact%0AUID:%20%0AServer:%20%0ANominal:%20980%20GC%0AHarga:%20Rp235.000">980 GC – Rp235.000</a>
+        <div class="price">Tap untuk pilih nominal</div>
+        <div id="genshin" class="hidden">
+          <a class="order-btn" href="https://wa.me/6285797758961?text=Halo%20IvasyaStore%0AGame:%20Genshin%20Impact%0ANominal:%2060%20GC">60 GC – Rp15.000</a>
+          <a class="order-btn" href="https://wa.me/6285797758961?text=Halo%20IvasyaStore%0AGame:%20Genshin%20Impact%0ANominal:%20300%20GC">300 GC – Rp75.000</a>
+        </div>
       </div>
     </div>
 
-    <!-- OPM STRONGEST SEA -->
-    <div class="game-card">
-      <img src="opm.jpg" alt="OPM Strongest SEA">
+    <!-- OPM -->
+    <div class="game-card" onclick="toggle('opm')">
+      <img src="opm.jpg" alt="OPM Strongest SEA" />
       <div class="game-info">
         <h3>OPM Strongest SEA</h3>
-        <div class="price">Coupon / Pack</div>
-        <a class="order-btn" href="https://wa.me/6285797758961?text=Halo%20IvasyaStore%0AGame:%20OPM%20Strongest%20SEA%0AID:%20%0AServer:%20%0ANominal:%20Monthly%20Card%0AHarga:%20Rp79.000">Monthly Card – Rp79.000</a>
+        <div class="price">Tap untuk pilih nominal</div>
+        <div id="opm" class="hidden">
+          <a class="order-btn" href="https://wa.me/6285797758961?text=Halo%20IvasyaStore%0AGame:%20OPM%20Strongest%20SEA%0ANominal:%20Monthly%20Card">Monthly Card – Rp79.000</a>
+        </div>
       </div>
     </div>
 
   </div>
 </div>
 
+<script>
+function toggle(id){
+  const el = document.getElementById(id);
+  el.style.display = el.style.display === 'block' ? 'none' : 'block';
+}
+</script>
+
 <footer>
-  © 2025 IvasyaStore • Order via WhatsApp
+  © 2025 IvasyaStore • All rights reserved
 </footer>
 
 </body>
 </html>
-
