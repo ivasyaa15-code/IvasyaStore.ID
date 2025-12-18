@@ -1,6 +1,10 @@
 <script>
 const wa='6285797758961';
 
+const modal = document.getElementById('modal');
+const modalTitle = document.getElementById('modalTitle');
+const modalBody = document.getElementById('modalBody');
+
 const games=[
   {
     name:'Mobile Legends',
@@ -22,19 +26,19 @@ const games=[
     ]
   },
   {
-    name:'Genshin Impact',
-    img:'genshin.png',
-    items:[
-      {n:'60 Genesis',h:'Rp15.000'},
-      {n:'300 Genesis',h:'Rp75.000'}
-    ]
-  },
-  {
     name:'PUBG Mobile',
     img:'pubg.png',
     items:[
       {n:'60 UC',h:'Rp15.000'},
       {n:'180 UC',h:'Rp45.000'}
+    ]
+  },
+  {
+    name:'Genshin Impact',
+    img:'genshin.png',
+    items:[
+      {n:'60 Genesis',h:'Rp15.000'},
+      {n:'300 Genesis',h:'Rp75.000'}
     ]
   }
 ];
@@ -60,7 +64,7 @@ function render(list){
 }
 render(games);
 
-/* MODAL NOMINAL */
+/* MODAL */
 function openModal(game){
   modalTitle.innerText=game.name;
   modalBody.innerHTML='';
