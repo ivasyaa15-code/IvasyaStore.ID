@@ -22,12 +22,12 @@ body{
   color:var(--text)
 }
 header{
-  padding:18px;
+  padding:20px;
   border-bottom:1px solid var(--border)
 }
 header h1{
   margin:0;
-  font-size:24px;
+  font-size:26px;
   color:#60a5fa
 }
 header p{
@@ -45,7 +45,7 @@ header p{
   background:#020617;
   border:1px solid var(--border);
   color:var(--text);
-  margin-bottom:20px;
+  margin-bottom:22px;
   font-size:14px
 }
 
@@ -54,25 +54,20 @@ header p{
   grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
   gap:16px
 }
+
 .game{
   background:var(--card);
   border:1px solid var(--border);
   border-radius:14px;
+  padding:26px 10px;
+  text-align:center;
+  font-weight:600;
   cursor:pointer;
-  overflow:hidden;
   transition:.15s
 }
-.game:hover{transform:translateY(-3px)}
-.game img{
-  width:100%;
-  height:120px;
-  object-fit:cover
-}
-.game div{
-  padding:12px;
-  font-weight:600;
-  font-size:14px;
-  text-align:center
+.game:hover{
+  transform:translateY(-3px);
+  border-color:#3b82f6
 }
 
 /* MODAL */
@@ -137,7 +132,6 @@ footer{
 
 <div class="container">
   <input class="search" placeholder="Cari game..." onkeyup="searchGame(this.value)">
-
   <div class="games" id="games"></div>
 </div>
 
@@ -154,58 +148,38 @@ footer{
 <footer>© 2025 IvasyaStore</footer>
 
 <script>
-const wa="6285797758961";
+const wa = "6285797758961";
 
-const gamesData={
-  "Mobile Legends":{
-    img:"images/ml.jpg",
-    items:["86 Diamond","172 Diamond","344 Diamond"]
-  },
-  "Free Fire":{
-    img:"images/ff.jpg",
-    items:["70 Diamond","140 Diamond","355 Diamond"]
-  },
-  "PUBG Mobile":{
-    img:"images/pubg.jpg",
-    items:["60 UC","180 UC","325 UC"]
-  },
-  "Genshin Impact":{
-    img:"images/genshin.jpg",
-    items:["60 GC","300 GC"]
-  },
-  "Valorant":{
-    img:"images/valorant.jpg",
-    items:["125 VP","420 VP","700 VP"]
-  },
-  "Roblox":{
-    img:"images/roblox.jpg",
-    items:["400 Robux","800 Robux"]
-  }
+const gamesData = {
+  "Mobile Legends": ["86 Diamond","172 Diamond","344 Diamond"],
+  "Free Fire": ["70 Diamond","140 Diamond","355 Diamond"],
+  "PUBG Mobile": ["60 UC","180 UC","325 UC"],
+  "Genshin Impact": ["60 Genesis Crystal","300 Genesis Crystal"],
+  "Valorant": ["125 VP","420 VP","700 VP"],
+  "Roblox": ["400 Robux","800 Robux"]
 };
 
-
-const gamesEl=document.getElementById("games");
+const gamesEl = document.getElementById("games");
 
 function renderGames(filter=""){
   gamesEl.innerHTML="";
-  Object.keys(gamesData).forEach(g=>{
-    if(!g.toLowerCase().includes(filter.toLowerCase())) return;
-    const d=gamesData[g];
+  Object.keys(gamesData).forEach(game=>{
+    if(!game.toLowerCase().includes(filter.toLowerCase())) return;
     const div=document.createElement("div");
     div.className="game";
-    div.innerHTML=`<img src="${d.img}"><div>${g}</div>`;
-    div.onclick=()=>openGame(g);
+    div.innerText=game;
+    div.onclick=()=>openGame(game);
     gamesEl.appendChild(div);
   });
 }
 
-function searchGame(v){renderGames(v)}
+function searchGame(v){ renderGames(v); }
 
 function openGame(game){
   document.getElementById("title").innerText=game;
   const list=document.getElementById("list");
   list.innerHTML="";
-  gamesData[game].items.forEach(n=>{
+  gamesData[game].forEach(n=>{
     const a=document.createElement("a");
     a.className="btn";
     a.href=`https://wa.me/${wa}?text=Halo%20IvasyaStore%0AGame:%20${encodeURIComponent(game)}%0ANominal:%20${encodeURIComponent(n)}`;
@@ -214,11 +188,13 @@ function openGame(game){
   });
   document.getElementById("modal").style.display="flex";
 }
-function closeModal(){document.getElementById("modal").style.display="none"}
+
+function closeModal(){
+  document.getElementById("modal").style.display="none";
+}
 
 renderGames();
 </script>
 
 </body>
 </html>
-
